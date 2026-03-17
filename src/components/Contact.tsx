@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, Clock, Instagram } from "lucide-react";
 
 const contactItems = [
-  { icon: MapPin, label: "Adresă", value: "Chișinău, Republica Moldova" },
-  { icon: Phone, label: "Telefon", value: "+373 XX XXX XXX" },
+  { icon: MapPin, label: "Adresă", value: "Bd. Mircea cel Bătrân 41b, sec. Ciocana, Chișinău" },
+  { icon: Phone, label: "Telefon", value: "+373 068 303 088" },
   {
     icon: Clock,
     label: "Program",
@@ -68,7 +68,7 @@ export default function Contact() {
 
           <div className="tactile-inset rounded-2xl overflow-hidden">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43564.26!2d28.81!3d47.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97c3628b769a1%3A0x37d1d6305749dd3c!2zQ2hpyJlpbsSD!5e0!3m2!1sro!2smd!4v1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.5!2d28.8577!3d47.0365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97da47b2e9e5b%3A0x6a8b3b5e8f0c9d2a!2sBd.%20Mircea%20cel%20B%C4%83tr%C3%A2n%2041b%2C%20Chi%C8%99in%C4%83u!5e0!3m2!1sro!2smd!4v1"
               width="100%"
               height="200"
               style={{ border: 0, borderRadius: 16 }}

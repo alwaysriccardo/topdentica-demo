@@ -33,7 +33,7 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-zinc-500">
           <span>&copy; 2026 TopDentica. Toate drepturile rezervate.</span>
-          <span>Chișinău, Republica Moldova</span>
+          <span>Bd. Mircea cel Bătrân 41b, sec. Ciocana, Chișinău</span>
         </div>
       </div>
     </footer>

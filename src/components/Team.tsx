@@ -7,9 +7,9 @@ const DOCTOR_IMAGE =
 
 const doctors = [
   {
-    name: "Dr. Andrei Popescu",
-    specialty: "Stomatologie Generală",
-    bio: "Specialist în tratamente complexe și igienizare profesională.",
+    name: "Dr. Sineac Alexei",
+    specialty: "Fondator & Medic Stomatolog",
+    bio: "Fondatorul clinicii TopDentica. Specialist în tratamente complexe și igienizare profesională.",
   },
   {
     name: "Dr. Mihai Rusu",

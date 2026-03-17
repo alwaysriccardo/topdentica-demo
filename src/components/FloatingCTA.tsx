@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function FloatingCTA() {
   return (
     <motion.a
-      href="https://wa.me/37300000000?text=Bună%20ziua!%20Aș%20dori%20să%20programez%20o%20consultație."
+      href="https://wa.me/37368303088?text=Bună%20ziua!%20Aș%20dori%20să%20programez%20o%20consultație."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Scrie pe WhatsApp"
