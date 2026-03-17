@@ -1,31 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Stethoscope } from "lucide-react";
+
+const DOCTOR_IMAGE =
+  "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80";
 
 const doctors = [
   {
-    name: "Dr. Stomatolog",
+    name: "Dr. Andrei Popescu",
     specialty: "Stomatologie Generală",
     bio: "Specialist în tratamente complexe și igienizare profesională.",
   },
   {
-    name: "Dr. Chirurg",
+    name: "Dr. Mihai Rusu",
     specialty: "Chirurgie Orală",
     bio: "Expert în extracții, chirurgie parodontală și implantologie.",
   },
   {
-    name: "Dr. Ortodont",
+    name: "Dr. Alexandru Ceban",
     specialty: "Ortodonție",
     bio: "Specialist în aparate dentare și aliniere perfectă a dinților.",
   },
   {
-    name: "Dr. Estetician",
+    name: "Dr. Victor Lungu",
     specialty: "Estetică Dentară",
     bio: "Expert în fațete, coroane ceramice și albire profesională.",
   },
   {
-    name: "Dr. Parodontolog",
+    name: "Dr. Ion Munteanu",
     specialty: "Parodontologie",
     bio: "Specialist în tratamentul gingiilor și prevenirea parodontozei.",
   },
@@ -77,8 +79,12 @@ export default function Team() {
               variants={card}
               className="tactile-glass rounded-2xl p-5 border border-zinc-800/50 transition-all duration-300 hover:-translate-y-2 hover:border-teal-500/40 flex flex-col items-center text-center"
             >
-              <div className="w-20 h-20 rounded-full tactile-inset flex items-center justify-center mb-4 border border-zinc-800">
-                <Stethoscope size={28} className="text-teal-400" />
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-zinc-700/50 group-hover:border-teal-500/40 transition-colors">
+                <img
+                  src={DOCTOR_IMAGE}
+                  alt={doc.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               <h3 className="text-sm font-semibold text-zinc-100">{doc.name}</h3>
