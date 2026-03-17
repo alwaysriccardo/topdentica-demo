@@ -1,181 +1,178 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { CalendarCheck, ClipboardList, Sparkles, Wrench } from "lucide-react";
 
-interface Step {
-  number: number;
-  title: string;
-  description: string;
-}
-
-const steps: Step[] = [
+const steps = [
   {
     number: 1,
     title: "Consultație Gratuită",
     description:
       "Evaluăm starea dinților tăi și discutăm opțiunile de tratament. Fără costuri, fără obligații.",
+    icon: CalendarCheck,
   },
   {
     number: 2,
     title: "Plan de Tratament",
     description:
       "Elaborăm un plan personalizat cu radiografie digitală și explicații detaliate.",
+    icon: ClipboardList,
   },
   {
     number: 3,
     title: "Tratament Profesional",
     description:
       "Echipa noastră aplică tratamentul cu cele mai moderne tehnologii și materiale.",
+    icon: Wrench,
   },
   {
     number: 4,
     title: "Zâmbetul Perfect",
     description:
       "Rezultatul final: un zâmbet sănătos și încrezător. Controale regulate pentru menținere.",
+    icon: Sparkles,
   },
 ];
 
-function StepCard({
-  step,
-  index,
-  inView,
-}: {
-  step: Step;
-  index: number;
-  inView: boolean;
-}) {
-  const isLeft = index % 2 === 0;
+function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const isEven = index % 2 === 0;
+  const Icon = step.icon;
 
   return (
-    <div className="relative grid grid-cols-[1fr_48px_1fr] items-center gap-4 md:gap-8">
-      {/* Left content or spacer */}
-      <div className={isLeft ? "block" : "hidden md:block"}>
-        {isLeft ? (
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{
-              duration: 0.55,
-              delay: index * 0.15 + 0.2,
-              ease: [0.16, 1, 0.3, 1] as const,
-            }}
-            className="tactile-glass group rounded-2xl p-6 transition-colors duration-300 hover:border-teal-500/20 md:text-right"
+    <div
+      ref={ref}
+      className={`relative flex items-start gap-6 md:gap-0 ${
+        isEven ? "md:flex-row" : "md:flex-row-reverse"
+      }`}
+    >
+      {/* Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.97 }}
+        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{
+          duration: 0.7,
+          delay: 0.15,
+          ease: [0.16, 1, 0.3, 1] as const,
+        }}
+        className={`relative flex-1 md:w-[calc(50%-40px)] ${
+          isEven ? "md:pr-16 md:text-right" : "md:pl-16"
+        }`}
+      >
+        <div className="tactile-glass rounded-2xl p-6 border border-zinc-800/50 transition-all duration-500 hover:border-teal-500/30 hover:shadow-[0_0_40px_rgba(13,148,136,0.06)] group">
+          <div
+            className={`flex items-center gap-3 mb-3 ${
+              isEven ? "md:justify-end" : ""
+            }`}
           >
-            <h3 className="mb-2 text-lg font-semibold text-zinc-100">
-              {step.title}
-            </h3>
-            <p className="text-sm leading-relaxed text-zinc-400">
-              {step.description}
-            </p>
-          </motion.div>
-        ) : (
-          <div className="hidden md:block" />
-        )}
-      </div>
-
-      {/* Center node */}
-      <div className="relative z-10 flex justify-center">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={inView ? { scale: 1 } : {}}
-          transition={{
-            duration: 0.4,
-            delay: index * 0.15,
-            ease: [0.16, 1, 0.3, 1] as const,
-          }}
-          className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-zinc-800 bg-[#09090b] text-sm font-bold text-teal-400 transition-colors duration-300 hover:border-teal-500"
-        >
-          {step.number}
-        </motion.div>
-      </div>
-
-      {/* Right content or spacer */}
-      <div className={!isLeft ? "block" : "hidden md:block"}>
-        {!isLeft ? (
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{
-              duration: 0.55,
-              delay: index * 0.15 + 0.2,
-              ease: [0.16, 1, 0.3, 1] as const,
-            }}
-            className="tactile-glass group rounded-2xl p-6 transition-colors duration-300 hover:border-teal-500/20"
-          >
-            <h3 className="mb-2 text-lg font-semibold text-zinc-100">
-              {step.title}
-            </h3>
-            <p className="text-sm leading-relaxed text-zinc-400">
-              {step.description}
-            </p>
-          </motion.div>
-        ) : (
-          <div className="hidden md:block" />
-        )}
-      </div>
-
-      {/* Mobile fallback: show card on both sides for small screens */}
-      {isLeft ? null : (
-        <div className="col-span-3 -mt-2 md:hidden">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{
-              duration: 0.55,
-              delay: index * 0.15 + 0.2,
-              ease: [0.16, 1, 0.3, 1] as const,
-            }}
-            className="tactile-glass rounded-2xl p-6"
-          >
-            <h3 className="mb-2 text-lg font-semibold text-zinc-100">
-              {step.title}
-            </h3>
-            <p className="text-sm leading-relaxed text-zinc-400">
-              {step.description}
-            </p>
-          </motion.div>
+            <div className="w-9 h-9 rounded-xl bg-teal-500/10 flex items-center justify-center border border-teal-500/20 group-hover:bg-teal-500/20 transition-colors">
+              <Icon size={16} className="text-teal-400" />
+            </div>
+            <span className="text-xs font-mono text-teal-400/60 uppercase tracking-widest">
+              Pas {step.number}
+            </span>
+          </div>
+          <h3 className="text-lg font-semibold text-zinc-100 mb-2">
+            {step.title}
+          </h3>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            {step.description}
+          </p>
         </div>
-      )}
+      </motion.div>
+
+      {/* Center node — visible on desktop only */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={inView ? { scale: 1 } : {}}
+        transition={{
+          duration: 0.5,
+          ease: [0.16, 1, 0.3, 1] as const,
+        }}
+        className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10 h-10 w-10 items-center justify-center rounded-full border-2 border-zinc-800 bg-[#0a0a0c] text-sm font-bold text-teal-400 hover:border-teal-500 transition-colors"
+      >
+        {step.number}
+      </motion.div>
+
+      {/* Mobile node — left side */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={inView ? { scale: 1 } : {}}
+        transition={{
+          duration: 0.5,
+          ease: [0.16, 1, 0.3, 1] as const,
+        }}
+        className="md:hidden flex-shrink-0 relative z-10 h-10 w-10 flex items-center justify-center rounded-full border-2 border-zinc-800 bg-[#0a0a0c] text-sm font-bold text-teal-400 mt-6"
+      >
+        {step.number}
+      </motion.div>
+
+      {/* Spacer for the other side on desktop */}
+      <div className="hidden md:block flex-1 md:w-[calc(50%-40px)]" />
     </div>
   );
 }
 
 export default function Process() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.8", "end 0.6"],
+  });
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const lineOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <section className="relative border-y border-zinc-900 bg-[#0a0a0c] py-28 px-4 sm:px-6 lg:px-8">
+    <section className="relative border-y border-zinc-900 bg-[#0a0a0c] py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="mx-auto max-w-4xl">
         {/* Header */}
-        <div className="mb-20 text-center">
-          <div className="mb-4 flex items-center justify-center gap-3">
-            <span className="h-px w-8 bg-zinc-700" />
-            <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">
-              Cum Funcționează
-            </span>
-          </div>
-          <h2 className="text-3xl font-semibold tracking-tight text-zinc-100 sm:text-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
+          className="mb-20 text-center"
+        >
+          <span className="inline-block text-xs font-semibold uppercase tracking-widest text-teal-400 mb-3">
+            Cum Funcționează
+          </span>
+          <h2 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl font-bold text-zinc-100 leading-tight">
             De la consultație la zâmbetul perfect
           </h2>
-        </div>
+          <p className="mt-4 text-zinc-400 max-w-lg mx-auto">
+            Patru pași simpli spre sănătatea dentară ideală.
+          </p>
+        </motion.div>
 
         {/* Timeline */}
-        <div ref={ref} className="relative">
-          {/* Central spine */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2">
+        <div ref={containerRef} className="relative">
+          {/* Desktop center spine with scroll-driven progress */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-px">
+            <div className="h-full w-full bg-zinc-800/50" />
             <motion.div
-              initial={{ scaleY: 0 }}
-              animate={inView ? { scaleY: 1 } : {}}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }}
-              className="h-full w-full origin-top bg-gradient-to-b from-teal-500/60 via-zinc-800 to-zinc-900"
+              style={{ height: lineHeight, opacity: lineOpacity }}
+              className="absolute top-0 left-0 w-full bg-gradient-to-b from-teal-500 via-teal-400/60 to-transparent origin-top"
+            />
+            <motion.div
+              style={{ height: lineHeight, opacity: lineOpacity }}
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-3 bg-gradient-to-b from-teal-500/20 via-teal-400/5 to-transparent blur-sm origin-top"
             />
           </div>
 
-          <div className="relative flex flex-col gap-12">
+          {/* Mobile left spine with scroll-driven progress */}
+          <div className="md:hidden absolute left-[19px] top-0 bottom-0 w-px">
+            <div className="h-full w-full bg-zinc-800/50" />
+            <motion.div
+              style={{ height: lineHeight, opacity: lineOpacity }}
+              className="absolute top-0 left-0 w-full bg-gradient-to-b from-teal-500 via-teal-400/60 to-transparent origin-top"
+            />
+          </div>
+
+          <div className="relative flex flex-col gap-10 md:gap-16">
             {steps.map((step, i) => (
-              <StepCard key={step.number} step={step} index={i} inView={inView} />
+              <StepCard key={step.number} step={step} index={i} />
             ))}
           </div>
         </div>
