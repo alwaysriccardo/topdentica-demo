@@ -21,12 +21,6 @@ const images = [
     label: "Tehnologie Modernă",
     span: false,
   },
-  {
-    src: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80",
-    alt: "Pacientă cu zâmbet perfect",
-    label: "Rezultate",
-    span: false,
-  },
 ];
 
 const tileVariants = {
