@@ -4,27 +4,27 @@ import { motion } from "framer-motion";
 
 const images = [
   {
-    src: "https://images.unsplash.com/photo-1629909615184-74f495363b67?w=600&q=80",
+    src: "https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80",
     alt: "Cabinet stomatologic modern",
-    label: "Cabinet",
+    label: "Cabinetul Principal",
     span: true,
   },
   {
-    src: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80",
-    alt: "Echipament stomatologic de ultimă generație",
-    label: "Echipament",
+    src: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80",
+    alt: "Tratament stomatologic profesional",
+    label: "Tratament",
     span: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80",
-    alt: "Interiorul clinicii TopDentica",
-    label: "Interior",
+    src: "https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=600&q=80",
+    alt: "Echipament dentar modern",
+    label: "Echipament Modern",
     span: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80",
-    alt: "Instrumente stomatologice profesionale",
-    label: "Instrumente",
+    src: "https://images.unsplash.com/photo-1445527815600-ecab8bfe4acd?w=600&q=80",
+    alt: "Zâmbet sănătos",
+    label: "Rezultate",
     span: false,
   },
 ];

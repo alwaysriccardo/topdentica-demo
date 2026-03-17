@@ -51,7 +51,7 @@ export default function WhyUs() {
           >
             <div className="tactile-base rounded-2xl p-1 group transition-shadow duration-500 hover:shadow-[0_0_40px_rgba(13,148,136,0.12)]">
               <img
-                src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80"
+                src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80"
                 alt="Tratament stomatologic la clinica TopDentica"
                 className="w-full rounded-xl object-cover aspect-[4/5]"
               />

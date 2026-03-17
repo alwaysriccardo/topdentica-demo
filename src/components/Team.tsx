@@ -8,14 +8,14 @@ const doctors = [
     specialty: "Stomatologie Generală & Estetică",
     bio: "Specialist în tratamente complexe, igienizare profesională și estetică dentară. Abordare centrată pe confortul pacientului.",
     image:
-      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80",
+      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=80",
   },
   {
     name: "Dr. Chirurg",
     specialty: "Chirurgie Orală & Parodontologie",
     bio: "Expert în chirurgie orală, parodontologie și implantologie. Tehnici moderne și minim invazive.",
     image:
-      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80",
+      "https://images.unsplash.com/photo-1594824476967-48c8b964ac31?w=600&q=80",
   },
 ];
 

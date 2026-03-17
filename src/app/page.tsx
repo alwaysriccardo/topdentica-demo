@@ -5,6 +5,7 @@ import WhyUs from "@/components/WhyUs";
 import Process from "@/components/Process";
 import Gallery from "@/components/Gallery";
 import Team from "@/components/Team";
+import VideoFAQ from "@/components/VideoFAQ";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -20,6 +21,7 @@ export default function Home() {
       <Process />
       <Gallery />
       <Team />
+      <VideoFAQ />
       <Testimonials />
       <Contact />
       <Footer />
