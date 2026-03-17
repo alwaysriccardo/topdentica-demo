@@ -11,7 +11,6 @@ const fade = (delay: number) => ({
 const stats = [
   { value: "2000+", label: "Pacienți" },
   { value: "10+", label: "Ani Experiență" },
-  { value: "899 lei", label: "Igienizare Pro" },
   { value: "Gratuită", label: "Consultația" },
 ];
 
@@ -87,7 +86,7 @@ export default function Hero() {
         {/* Stats bar */}
         <motion.div
           {...fade(0.7)}
-          className="mt-16 w-full max-w-2xl tactile-glass rounded-2xl px-2 sm:px-6 py-5 grid grid-cols-2 sm:grid-cols-4 gap-y-4"
+          className="mt-16 w-full max-w-xl tactile-glass rounded-2xl px-2 sm:px-6 py-5 grid grid-cols-3 gap-y-4"
         >
           {stats.map(({ value, label }, i) => (
             <div
