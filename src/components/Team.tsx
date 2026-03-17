@@ -1,28 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
 
 const doctors = [
   {
-    name: "Dr. [Numele]",
-    title: "Medic Stomatolog",
-    bio: "Specialist în stomatologie generală și estetică dentară. Experiență vastă în tratamente complexe și igienizare profesională.",
+    name: "Dr. Stomatolog",
+    specialty: "Stomatologie Generală & Estetică",
+    bio: "Specialist în tratamente complexe, igienizare profesională și estetică dentară. Abordare centrată pe confortul pacientului.",
+    image:
+      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80",
   },
   {
-    name: "Dr. [Numele]",
-    title: "Medic Stomatolog / Chirurg",
-    bio: "Expert în chirurgie orală, parodontologie și implantologie. Abordare modernă a tratamentelor stomatologice.",
+    name: "Dr. Chirurg",
+    specialty: "Chirurgie Orală & Parodontologie",
+    bio: "Expert în chirurgie orală, parodontologie și implantologie. Tehnici moderne și minim invazive.",
+    image:
+      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80",
   },
 ];
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.15 } },
+  show: { transition: { staggerChildren: 0.18 } },
 };
 
 const card = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 36 },
   show: {
     opacity: 1,
     y: 0,
@@ -34,7 +37,6 @@ export default function Team() {
   return (
     <section id="echipa" className="relative py-28 px-4">
       <div className="mx-auto max-w-5xl">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +52,6 @@ export default function Team() {
           </h2>
         </motion.div>
 
-        {/* Cards */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -60,24 +61,39 @@ export default function Team() {
         >
           {doctors.map((doc) => (
             <motion.div
-              key={doc.title}
+              key={doc.name}
               variants={card}
-              className="tactile-glass rounded-[2rem] p-8 border border-zinc-700/50 transition-all duration-300 hover:-translate-y-2 hover:border-teal-500/40"
+              className="tactile-glass rounded-[2rem] p-6 border border-zinc-700/50 transition-all duration-300 hover:-translate-y-2 hover:border-teal-500/40"
             >
-              {/* Photo placeholder */}
-              <div className="relative w-full h-64 rounded-2xl tactile-inset overflow-hidden mb-6">
+              <div className="relative w-full h-72 rounded-2xl overflow-hidden mb-6">
+                <img
+                  src={doc.image}
+                  alt={doc.name}
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <User size={56} className="text-zinc-600" />
-                </div>
+                <span className="absolute bottom-4 left-4 text-lg font-bold text-white">
+                  {doc.name}
+                </span>
               </div>
 
-              <h3 className="text-xl font-semibold text-zinc-100">{doc.name}</h3>
-              <p className="text-sm font-medium text-teal-400 mt-1">{doc.title}</p>
-              <p className="text-sm text-zinc-400 mt-3 leading-relaxed">{doc.bio}</p>
+              <p className="text-sm font-medium text-teal-400">{doc.specialty}</p>
+              <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
+                {doc.bio}
+              </p>
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center text-xs text-zinc-500 italic mt-10"
+        >
+          * Fotografiile sunt ilustrative. Echipa reală vă așteaptă la clinică.
+        </motion.p>
       </div>
     </section>
   );

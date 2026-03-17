@@ -1,28 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, Clock, BadgeCheck } from "lucide-react";
 
 const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
+  transition: { duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] as const },
 });
 
 const stats = [
-  { icon: Users, value: "2000+", label: "Pacienți Fericiți" },
-  { icon: Clock, value: "10+", label: "Ani Experiență" },
-  { icon: BadgeCheck, value: "100%", label: "Consultații Gratuite" },
+  { value: "2000+", label: "Pacienți" },
+  { value: "10+", label: "Ani Experiență" },
+  { value: "899 lei", label: "Igienizare Pro" },
+  { value: "Gratuită", label: "Consultația" },
 ];
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 pt-24 pb-16">
-      {/* Dot pattern background */}
+      {/* Background image */}
+      <img
+        src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80"
+        alt="Clinică stomatologică modernă TopDentica"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#09090b]" />
+
+      {/* Dot pattern */}
       <div className="dot-pattern absolute inset-0" />
 
       {/* Radial teal glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(13,148,136,0.15),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(13,148,136,0.18),transparent)]" />
 
       <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
         {/* Pill badge */}
@@ -39,7 +49,7 @@ export default function Hero() {
         {/* Heading */}
         <motion.h1
           {...fade(0.25)}
-          className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]"
+          className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]"
         >
           Zâmbetul tău perfect
           <br />
@@ -49,23 +59,26 @@ export default function Hero() {
         {/* Subtitle */}
         <motion.p
           {...fade(0.4)}
-          className="mt-6 text-base sm:text-lg text-zinc-400 max-w-xl leading-relaxed"
+          className="mt-6 text-base sm:text-lg text-zinc-300 max-w-xl leading-relaxed"
         >
           Clinică stomatologică modernă în Chișinău. Tehnologii avansate, medici
           dedicați, rezultate care vorbesc de la sine.
         </motion.p>
 
         {/* CTA buttons */}
-        <motion.div {...fade(0.55)} className="flex flex-wrap items-center justify-center gap-4 mt-10">
+        <motion.div
+          {...fade(0.55)}
+          className="flex flex-wrap items-center justify-center gap-4 mt-10"
+        >
           <a
             href="#contact"
-            className="btn-teal rounded-full px-8 py-3 text-sm font-medium"
+            className="btn-teal rounded-full px-8 py-3.5 text-sm font-medium"
           >
-            Programează-te
+            Programează-te Acum
           </a>
           <a
             href="#servicii"
-            className="tactile-glass border border-zinc-700 rounded-full px-8 py-3 text-sm font-medium text-white hover:border-zinc-500 transition-colors"
+            className="tactile-glass border border-zinc-700 rounded-full px-8 py-3.5 text-sm font-medium text-white hover:border-zinc-500 transition-colors"
           >
             Descoperă Serviciile
           </a>
@@ -74,13 +87,19 @@ export default function Hero() {
         {/* Stats bar */}
         <motion.div
           {...fade(0.7)}
-          className="mt-16 w-full max-w-lg tactile-glass rounded-2xl px-6 py-5 grid grid-cols-3 gap-4"
+          className="mt-16 w-full max-w-2xl tactile-glass rounded-2xl px-2 sm:px-6 py-5 grid grid-cols-2 sm:grid-cols-4 gap-y-4"
         >
-          {stats.map(({ icon: Icon, value, label }) => (
-            <div key={label} className="flex flex-col items-center gap-1">
-              <Icon size={18} className="text-teal-400 mb-1" />
-              <span className="text-xl sm:text-2xl font-bold text-white">{value}</span>
-              <span className="text-[11px] sm:text-xs text-zinc-500 leading-tight text-center">
+          {stats.map(({ value, label }, i) => (
+            <div
+              key={label}
+              className={`flex flex-col items-center gap-1 ${
+                i < stats.length - 1
+                  ? "sm:border-r sm:border-zinc-800"
+                  : ""
+              }`}
+            >
+              <span className="text-2xl font-bold text-white">{value}</span>
+              <span className="text-xs text-zinc-500 uppercase tracking-wide">
                 {label}
               </span>
             </div>
