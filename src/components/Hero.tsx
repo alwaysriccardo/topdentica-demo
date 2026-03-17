@@ -20,9 +20,9 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 pt-24 pb-16">
       {/* Background image */}
       <img
-        src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80"
-        alt="Clinică stomatologică modernă TopDentica"
-        className="absolute inset-0 h-full w-full object-cover"
+        src="/hero-smile.png"
+        alt="Zâmbet perfect — TopDentica Chișinău"
+        className="absolute inset-0 h-full w-full object-cover object-center"
       />
 
       {/* Dark gradient overlay */}
