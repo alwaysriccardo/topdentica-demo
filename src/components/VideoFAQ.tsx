@@ -12,37 +12,37 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    video: "/videos/vid-0008484.mp4",
+    video: "/videos/vid-0008484.mp4#t=0.5",
     question: "Ce fac dacă mi-a căzut o plombă?",
     answer:
       "Nu mânca pe acel dinte și nu încerca să lipești plomba. Curăță zona și programează-te imediat.",
   },
   {
-    video: "/videos/vid-0393087.mp4",
+    video: "/videos/vid-0393087.mp4#t=0.5",
     question: "Cauza #1 a pierderii dinților",
     answer:
       "Caria — de la o gaură mică la infecții grave. Peste 90% din adulți au avut cel puțin o carie.",
   },
   {
-    video: "/videos/vid-0771485.mp4",
+    video: "/videos/vid-0771485.mp4#t=0.5",
     question: "Cum o carie mică distruge toată dantura",
     answer:
       "Apare durerea, infecția, și poate afecta osul. Un control la timp face diferența.",
   },
   {
-    video: "/videos/vid-0921768.mp4",
+    video: "/videos/vid-0921768.mp4#t=0.5",
     question: "Cum începe parodontoza?",
     answer:
       "Igiena incorectă, genetica și stilul de viață. Periajul corect și controlul la 6 luni previn totul.",
   },
   {
-    video: "/videos/vid-0960212.mp4",
+    video: "/videos/vid-0960212.mp4#t=0.5",
     question: "Semnele parodontozei",
     answer:
       "Sângerarea la periaj, respirația urât mirositoare, retragerea gingiilor. Nu doare la început.",
   },
   {
-    video: "/videos/vid-0486632.mp4",
+    video: "/videos/vid-0486632.mp4#t=0.5",
     question: "Ce NU trebuie să faci niciodată",
     answer:
       "Fără bicarbonat pentru albire, fără antibiotice pe cont propriu, și nu ignora sângerarea gingiilor.",
@@ -94,7 +94,7 @@ function PhoneCard({ item, index }: { item: FAQItem; index: number }) {
           <video
             ref={videoRef}
             src={item.video}
-            preload="metadata"
+            preload="auto"
             playsInline
             muted={muted}
             loop
