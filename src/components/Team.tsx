@@ -1,42 +1,54 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Stethoscope } from "lucide-react";
 
 const doctors = [
   {
     name: "Dr. Stomatolog",
-    specialty: "Stomatologie Generală & Estetică",
-    bio: "Specialist în tratamente complexe, igienizare profesională și estetică dentară. Abordare centrată pe confortul pacientului.",
-    image:
-      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=80",
+    specialty: "Stomatologie Generală",
+    bio: "Specialist în tratamente complexe și igienizare profesională.",
   },
   {
     name: "Dr. Chirurg",
-    specialty: "Chirurgie Orală & Parodontologie",
-    bio: "Expert în chirurgie orală, parodontologie și implantologie. Tehnici moderne și minim invazive.",
-    image:
-      "https://images.unsplash.com/photo-1594824476967-48c8b964ac31?w=600&q=80",
+    specialty: "Chirurgie Orală",
+    bio: "Expert în extracții, chirurgie parodontală și implantologie.",
+  },
+  {
+    name: "Dr. Ortodont",
+    specialty: "Ortodonție",
+    bio: "Specialist în aparate dentare și aliniere perfectă a dinților.",
+  },
+  {
+    name: "Dr. Estetician",
+    specialty: "Estetică Dentară",
+    bio: "Expert în fațete, coroane ceramice și albire profesională.",
+  },
+  {
+    name: "Dr. Parodontolog",
+    specialty: "Parodontologie",
+    bio: "Specialist în tratamentul gingiilor și prevenirea parodontozei.",
   },
 ];
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.18 } },
+  show: { transition: { staggerChildren: 0.1 } },
 };
 
 const card = {
-  hidden: { opacity: 0, y: 36 },
+  hidden: { opacity: 0, y: 32 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
 export default function Team() {
   return (
     <section id="echipa" className="relative py-28 px-4">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,30 +69,21 @@ export default function Team() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5"
         >
           {doctors.map((doc) => (
             <motion.div
               key={doc.name}
               variants={card}
-              className="tactile-glass rounded-[2rem] p-6 border border-zinc-700/50 transition-all duration-300 hover:-translate-y-2 hover:border-teal-500/40"
+              className="tactile-glass rounded-2xl p-5 border border-zinc-800/50 transition-all duration-300 hover:-translate-y-2 hover:border-teal-500/40 flex flex-col items-center text-center"
             >
-              <div className="relative w-full h-72 rounded-2xl overflow-hidden mb-6">
-                <img
-                  src={doc.image}
-                  alt={doc.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent" />
-                <span className="absolute bottom-4 left-4 text-lg font-bold text-white">
-                  {doc.name}
-                </span>
+              <div className="w-20 h-20 rounded-full tactile-inset flex items-center justify-center mb-4 border border-zinc-800">
+                <Stethoscope size={28} className="text-teal-400" />
               </div>
 
-              <p className="text-sm font-medium text-teal-400">{doc.specialty}</p>
-              <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
-                {doc.bio}
-              </p>
+              <h3 className="text-sm font-semibold text-zinc-100">{doc.name}</h3>
+              <p className="text-xs font-medium text-teal-400 mt-1">{doc.specialty}</p>
+              <p className="text-xs text-zinc-500 mt-2 leading-relaxed">{doc.bio}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -92,7 +95,7 @@ export default function Team() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center text-xs text-zinc-500 italic mt-10"
         >
-          * Fotografiile sunt ilustrative. Echipa reală vă așteaptă la clinică.
+          * Numele sunt ilustrative. Echipa reală vă așteaptă la clinică.
         </motion.p>
       </div>
     </section>

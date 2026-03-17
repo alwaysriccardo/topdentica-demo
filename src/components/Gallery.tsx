@@ -16,14 +16,14 @@ const images = [
     span: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=600&q=80",
-    alt: "Echipament dentar modern",
-    label: "Echipament Modern",
+    src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80",
+    alt: "Scaun stomatologic modern",
+    label: "Tehnologie Modernă",
     span: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1445527815600-ecab8bfe4acd?w=600&q=80",
-    alt: "Zâmbet sănătos",
+    src: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80",
+    alt: "Pacientă cu zâmbet perfect",
     label: "Rezultate",
     span: false,
   },
@@ -43,7 +43,6 @@ export default function Gallery() {
   return (
     <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="mx-auto max-w-6xl">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +58,6 @@ export default function Gallery() {
           </h2>
         </motion.div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 auto-rows-[240px] sm:auto-rows-[280px]">
           {images.map(({ src, alt, label, span }, i) => (
             <motion.div
@@ -87,7 +85,6 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
